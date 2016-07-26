@@ -1,8 +1,18 @@
 <img src=http://russellsstewart.com/s/tensorbox/tensorbox_output.jpg></img>
 
 TensorBox is a simple framework for training neural networks to detect objects in images. 
-Training requires a text file (see [here](http://russellsstewart.com/s/tensorbox/brainwash_test.txt), for example)
-of paths to images on disk and the corresponding object locations in each image.
+
+Training requires a text file (see [here](https://github.com/DrewNF/TensorBox/blob/master/fac-simile.idl), for example)
+of paths to images on disk and the corresponding object locations in each image, this are the composing fields and an example (the Bold syntax is the one that **MUST** be specified as separator):
+
+**"** _imagepath_ **"** [ **@** _n°frame_] **:** **(** _x1_ **,** _y1_ **,** _x2_ **,** _y2_ **,** **)** [**:** _confidencescore_ **/** _silhouetteid_] **;**
+
+**Fields between [] are OPTIONALS; it's important to know that ConfidenceScore and SilhouetteID, MUST be both specified or not, otherwise will raise an error.**
+
+This is an **Example** taken from the file linked above:
+
+"./Data/VID/train/ILSVRC2015_VID_train_0003/ILSVRC2015_train_00080007/000094.JPEG" @94 : (272.0,145.0,340.0,285.0) :1 /13;
+
 The basic model implements the simple and robust GoogLeNet-OverFeat algorithm. We additionally provide an implementation of the 
 [ReInspect](https://github.com/Russell91/ReInspect/)
 algorithm, reproducing state-of-the-art detection results on the highly occluded TUD crossing and brainwash datasets. 
